@@ -23,21 +23,22 @@ import java.util.List;
 public class RyzenUserWebSocketTest {
     Gson gson = new Gson();
     WebSocketClient webSocketClient = null;
+
     @Before
-    public void init(){
+    public void init() {
         try {
             HttpProxyProperties properties = new HttpProxyProperties();
 //            properties.setHost("127.0.0.1");
 //            properties.setEnabled(true);
 //            properties.setPort(7890);
-            webSocketClient = new XtWebSocketClient("wss://stream.xt.com/public");
+            webSocketClient = new XtWebSocketClient("wss://stream.crypto1668.com/public");
 //            webSocketClient.setProxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(properties.getHost(), properties.getPort())));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
         assert webSocketClient != null;
         webSocketClient.connect();
-        while (!webSocketClient.isOpen()){
+        while (!webSocketClient.isOpen()) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -45,14 +46,15 @@ public class RyzenUserWebSocketTest {
             }
         }
     }
+
     @After
-    public void after(){
+    public void after() {
 
     }
 
     @Test
-    public void subscribeAll(){
-        String listenKey="EB346241DFFEA0D7634EEE01520B25291702365643909";
+    public void subscribeAll() {
+        String listenKey = "EB346241DFFEA0D7634EEE01520B25291702365643909";
         List<String> params = new ArrayList<>();
         params.add("kline@btc_usdt,1m");
 
@@ -61,14 +63,51 @@ public class RyzenUserWebSocketTest {
     }
 
     @Test
-    public void subscribe(){
+    public void subscribe() {
         List<String> params = new ArrayList<>();
         params.add("depth@btc_usdt,20");
 
         RequestMessage requestMessage = RequestMessage.builder().id("005").method(Method.SUBSCRIBE.name()).params(params).build();
+        send(requestMessage);
+    }
+
+    @Test
+    public void trade() {
+        List<String> params = new ArrayList<>();
+        params.add("trade@sol_usdt");
+        RequestMessage requestMessage = RequestMessage.builder().id("111005").method(Method.SUBSCRIBE.name()).params(params).build();
+        send(requestMessage);
+    }
+
+    @Test
+    public void kline() {
+        List<String> params = new ArrayList<>();
+        params.add("kline@btc_usdt,5m");
+        RequestMessage requestMessage = RequestMessage.builder().id("111005").method(Method.SUBSCRIBE.name()).params(params).build();
+        send(requestMessage);
+    }
+
+    @Test
+    public void depth_update() {
+        List<String> params = new ArrayList<>();
+        params.add("depth_update@btc_usdt");
+        RequestMessage requestMessage = RequestMessage.builder().id("111005").method(Method.SUBSCRIBE.name()).params(params).build();
+        send(requestMessage);
+    }
+
+    @Test
+    public void ticker() {
+        List<String> params = new ArrayList<>();
+        params.add("ticker@btc_usdt");
+        RequestMessage requestMessage = RequestMessage.builder().id("111005").method(Method.SUBSCRIBE.name()).params(params).build();
+        send(requestMessage);
+    }
+
+    private void send(RequestMessage requestMessage) {
         webSocketClient.send(gson.toJson(requestMessage));
 
-        while (true){
+        System.out.println("webSocketClient.toString() = " + webSocketClient.toString());
+        while (true) {
             try {
                 Thread.sleep(30000L);
             } catch (InterruptedException e) {

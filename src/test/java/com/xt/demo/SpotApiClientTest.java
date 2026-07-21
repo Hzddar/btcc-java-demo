@@ -27,8 +27,8 @@ public class SpotApiClientTest {
                 .type("LIMIT")
                 .timeInForce("GTC")
                 .bizType("SPOT")
-                .price("63000")
-                .quantity("0.001")
+                .price(BigDecimal.valueOf(63000))
+                .quantity(BigDecimal.valueOf(0.001))
                 .media("btok")
                 .mediaChannel("btok123")
                 .build();

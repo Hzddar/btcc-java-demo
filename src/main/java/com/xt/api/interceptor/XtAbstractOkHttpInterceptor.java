@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
  * @create 2023/9/21 10:43
  */
 public abstract class XtAbstractOkHttpInterceptor implements Interceptor {
-    protected static final String appKey = "xxx";
-    protected static final String secretKey = "xxx";
+    protected static final String appKey = "ef74aaa9-1e8f-40b3-b2b7-ff82564fbe0f";
+    protected static final String secretKey = "a34f017fcd5afe18808fe0aeb8108c779d2e87d0";
 
 
     protected static final String encry = "HmacSHA256";

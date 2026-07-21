@@ -77,9 +77,10 @@ public class ThirdPartyTest {
 
     @Test
     public void batchOrderGet() {
-        String uri = "/spot/v4/batch-order";
+//        String uri = "/spot/v4/batch-order";
+        String uri = "/v4/batch-order";
         Map<String, Object> param = new HashMap<>();
-        param.put("orderIds", "156201996458139136,12312313212");
+        param.put("orderIds", "626854049415019840");
         System.out.println("result====" + XtHttpUtil.get(uri, param));
     }
 
@@ -94,16 +95,18 @@ public class ThirdPartyTest {
 
     @Test
     public void getOpenOrder() {
-        String uri = "/spot/v4/open-order";
+//        String uri = "/spot/v4/open-order";
+        String uri = "/v4/open-order" ;
         Map<String, Object> param = new HashMap<>();
-        param.put("symbol", "cmcx_usdt");
+        param.put("symbol", "btc_usdt");
         param.put("bizType", "SPOT");
         System.out.println("result====" + XtHttpUtil.get(uri, param));
     }
 
     @Test
     public void delOpenOrder() {
-        String uri = "/spot/v4/open-order";
+//        String uri = "/spot/v4/open-order";
+        String uri = "/v4/open-order" ;
         Map<String, Object> param = new HashMap<>();
         param.put("bizType", "SPOT");
         System.out.println("result====" + XtHttpUtil.deleteWithBody(uri, JSON.toJSONString(param)));
@@ -111,23 +114,36 @@ public class ThirdPartyTest {
 
     @Test
     public void getHistoryOrder() {
-        String uri = "/spot/v4/history-order";
+//        String uri = "/spot/v4/history-order";
+        String uri = "/v4/history-order";
         Map<String, Object> param = new HashMap<>();
         param.put("bizType", "SPOT");
+        param.put("type", "ENTRUST_TRACK");
         System.out.println("result====" + XtHttpUtil.get(uri, param));
     }
 
     @Test
     public void getTrade() {
-        String uri = "/spot/v4/trade";
+//        String uri = "/spot/v4/trade";
+        String uri = "/v4/trade";
         Map<String, Object> param = new HashMap<>();
         param.put("bizType", "SPOT");
+        param.put("symbol", "btc_usdt");
         System.out.println("result====" + XtHttpUtil.get(uri, param));
     }
 
     @Test
     public void getSpotBalance() {
-        String uri = "/spot/v4/balance";
+//        String uri = "/spot/v4/balance";
+        String uri = "/v4/balance";
+        Map<String, Object> param = new HashMap<>();
+        param.put("currency", "usdt");
+        System.out.println("result====" + XtHttpUtil.get(uri, param));
+    }
+
+    @Test
+    public void currencies() {
+        String uri = "/v4/public/currencies";
         Map<String, Object> param = new HashMap<>();
         param.put("currency", "usdt");
         System.out.println("result====" + XtHttpUtil.get(uri, param));
@@ -135,7 +151,8 @@ public class ThirdPartyTest {
 
     @Test
     public void getSpotBalances() {
-        String uri = "/spot/v4/balances";
+//        String uri = "/spot/v4/balances";
+        String uri = "/v4/balances";
         Map<String, Object> param = new HashMap<>();
         param.put("currencies", "usdt,btc");
         System.out.println("result====" + XtHttpUtil.get(uri, param));

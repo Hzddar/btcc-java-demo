@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.xt.api.client.XtWebSocketClient;
 import com.xt.api.dto.websocket.Method;
 import com.xt.api.dto.websocket.RequestMessage;
-import com.xt.api.dto.websocket.Topic;
 import org.java_websocket.client.WebSocketClient;
 import org.junit.After;
 import org.junit.Before;
