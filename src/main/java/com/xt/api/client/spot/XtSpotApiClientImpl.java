@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class XtSpotApiClientImpl implements XtSpotApiClient {
 
-    private final static String API_URL = "https://sapi.crypto1668.com";
+    private final static String API_URL = "https://sapi.xxx.com";
 
     private final XtSpotApiService service;
 

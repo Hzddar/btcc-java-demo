@@ -31,7 +31,7 @@ public class RyzenUserWebSocketTest {
 //            properties.setHost("127.0.0.1");
 //            properties.setEnabled(true);
 //            properties.setPort(7890);
-            webSocketClient = new XtWebSocketClient("wss://stream.crypto1668.com/public");
+            webSocketClient = new XtWebSocketClient("wss://stream.xxx.com/public");
 //            webSocketClient.setProxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(properties.getHost(), properties.getPort())));
         } catch (URISyntaxException e) {
             e.printStackTrace();
